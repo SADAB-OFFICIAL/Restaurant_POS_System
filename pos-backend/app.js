@@ -7,13 +7,15 @@ const cors = require("cors");
 const app = express();
 
 
-const PORT = config.port;
+const PORT = config.port || 5000;
 connectDB();
 
 // Middlewares
 app.use(cors({
     credentials: true,
-    origin: ['http://localhost:5173']
+    // Note: Jab aap Frontend deploy kar denge, to uska link yahan add karna mat bhulna
+    // Example: origin: ['http://localhost:5173', 'https://your-frontend-app.vercel.app']
+    origin: ['http://localhost:5173'] 
 }))
 app.use(express.json()); // parse incoming request in json format
 app.use(cookieParser())
@@ -38,3 +40,7 @@ app.use(globalErrorHandler);
 app.listen(PORT, () => {
     console.log(`☑️  POS Server is listening on port ${PORT}`);
 })
+
+// --- IMPORTANT FOR VERCEL DEPLOYMENT ---
+// Ye line add karna zaroori tha
+module.exports = app;
