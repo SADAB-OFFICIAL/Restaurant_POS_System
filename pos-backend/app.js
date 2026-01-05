@@ -15,7 +15,10 @@ app.use(cors({
     credentials: true,
     // Note: Jab aap Frontend deploy kar denge, to uska link yahan add karna mat bhulna
     // Example: origin: ['http://localhost:5173', 'https://your-frontend-app.vercel.app']
-    origin: ['http://localhost:5173'] 
+    origin: [
+        'http://localhost:5173', 
+        'https://restaurant-pos-system-4bnk.vercel.app'
+    ]
 }))
 app.use(express.json()); // parse incoming request in json format
 app.use(cookieParser())
